@@ -22,14 +22,16 @@ MongoClient.connect(`mongodb://${process.env.IP}:27017/TodoApp`, (err, db) => {
     // db.collection('Todos').findOneAndDelete({completed: false}).then((result) => {
     //     console.log(result);
     // });
-
+    
+    // CHALLENGES
+    
     // db.collection('Todos').deleteMany({text: 'Eat lunch'}).then((result) => {
     //     console.log(result);
     // });
     
-    db.collection('Todos').findOneAndDelete({_id: new ObjectID('5a261de3194d32112de841b1')}).then((result) => {
-        console.log(result);
-    })
+    // db.collection('Todos').findOneAndDelete({_id: new ObjectID('5a261de3194d32112de841b1')}).then((result) => {
+    //     console.log(result);
+    // });
 
     // db.close();
 });

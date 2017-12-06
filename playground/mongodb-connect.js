@@ -9,11 +9,11 @@ MongoClient.connect(`mongodb://${process.env.IP}:27017/TodoApp`, (err, db) => {
     console.log('Connected to MongoDB server');
     
     // db.collection('Todos').insertOne({
-    //     text: 'Something to do',
+    //     text: 'Eat lunch',
     //     completed: false
     // }, (err, result) => {
     //     if (err) {
-    //         return console.log('Unable to insert tod', err);
+    //         return console.log('Unable to insert todo', err);
     //     }
         
     //     console.log(JSON.stringify(result.ops, undefined, 2));

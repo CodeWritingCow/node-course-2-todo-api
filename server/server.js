@@ -21,6 +21,14 @@ app.post('/todos', (req, res) => {
     });
 });
 
+app.get('/todos', (req, res) => {
+    Todo.find().then((todos) => {
+        res.send({todos})
+    }, (err) => {
+        res.status(400).send(err);
+    });
+});
+
 app.listen(process.env.PORT, process.env.IP, () => {
     console.log(`${process.env.IP} Started on port ${process.env.PORT}`);
 });

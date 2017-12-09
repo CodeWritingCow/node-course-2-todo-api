@@ -6,7 +6,7 @@ var {mongoose} = require("./db/mongoose");
 var {Todo} = require("./models/todo");
 
 var app = express();
-
+const port = process.env.PORT;
 
 app.use(bodyParser.json());
 
@@ -49,8 +49,8 @@ app.get('/todos/:id', (req, res) => {
 });
 
 
-app.listen(process.env.PORT, process.env.IP, () => {
-    console.log(`${process.env.IP} Started on port ${process.env.PORT}`);
+app.listen(port, process.env.IP, () => {
+    console.log(`${process.env.IP} Started on port ${port}`);
 });
 
 module.exports = {app};

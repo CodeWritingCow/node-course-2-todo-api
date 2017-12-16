@@ -112,21 +112,23 @@ app.post('/users', (req, res) => {
     .catch((err) => {
         res.status(400).send(err);
     });
-})
+});
 
 app.get('/users/me', authenticate, (req, res) => {
     res.send(req.user);
-    // var token = req.header('x-auth');
+});
+
+// POST /users/login {email, password}
+app.post('/users/login', (req, res) => {
+    var body = _.pick(req.body, ['email', 'password']);
     
-    // User.findByToken(token).then((user) => {
-    //     if(!user) {
-    //         return Promise.reject();
-    //     }
-        
-    //     res.send(user);
-    // }).catch((err) => {
-    //     res.status(401).send();
-    // });
+    User.findByCredentials(body.email, body.password).then((user) => {
+        return user.generateAuthToken().then((token) => {
+            res.header('x-auth', token).send(user);
+        });
+    }).catch((err) => {
+        res.status(400).send();
+    });
 });
 
 app.listen(port, process.env.IP, () => {
